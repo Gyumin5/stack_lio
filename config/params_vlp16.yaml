@@ -1,0 +1,17 @@
+# Override snippet for COIN-LIO on Velodyne VLP-16 (KAIST URBAN dataset).
+preprocess:
+    lidar_type: 2
+    scan_line: 16
+    blind: 0.5
+    timestamp_unit: 3
+
+image:
+    # VLP-16: 16 rings x 1800 columns at 10 Hz (0.2 deg/col)
+    u_shift: 0               # KAIST URBAN: tune via calibrate.launch
+    intensity_scale: 0.25    # Velodyne intensity uint8 0..255
+    masks: []                # OS0-128 default masks (y=84) OOB on 16-row image
+
+common:
+    # KAIST URBAN exposes left/right Velodynes; pick one
+    lid_topic: /ns1/velodyne_points
+    imu_topic: /imu/data_raw

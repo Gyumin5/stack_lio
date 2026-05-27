@@ -1,0 +1,29 @@
+{
+    "_comment": "Hesai PandarXT-32 calibration shimmed into Ouster JSON schema for COIN-LIO. PandarXT-32 has 32 channels uniformly spaced 1 deg apart from +15 to -16 deg, 10 Hz with 0.18 deg horizontal resolution => 2000 columns per frame. beam_altitude_angles is ordered top->bottom (ring 0 = topmost). The repack script sorts/reassigns ring indices to match this ordering. pixel_shift_by_row left as zeros because PandarXT-32 fires all channels per column simultaneously (no inter-channel azimuth offset).",
+    "beam_altitude_angles": [
+        15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0,
+        7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0,
+        -1.0, -2.0, -3.0, -4.0, -5.0, -6.0, -7.0, -8.0,
+        -9.0, -10.0, -11.0, -12.0, -13.0, -14.0, -15.0, -16.0
+    ],
+    "beam_azimuth_angles": [
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+    ],
+    "lidar_origin_to_beam_origin_mm": 0.0,
+    "lidar_to_sensor_transform": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+    "imu_to_sensor_transform":   [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+    "lidar_mode": "2000x10",
+    "data_format": {
+        "columns_per_frame": 2000,
+        "columns_per_packet": 1,
+        "pixels_per_column": 32,
+        "pixel_shift_by_row": [
+            0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0
+        ]
+    },
+    "prod_line": "Hesai-PandarXT-32"
+}

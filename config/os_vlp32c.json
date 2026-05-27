@@ -1,0 +1,29 @@
+{
+    "_comment": "Velodyne VLP-32C (HDL-32C / Ultra Puck) calibration shimmed into Ouster schema for COIN-LIO. Vertical FoV -25 deg (down) to +15 deg (up) with NON-UNIFORM spacing concentrated near the horizon (denser between -1 and +1). Angles below are ordered TOP->BOTTOM (ring 0 = highest beam). Source: Velodyne VLP-32C user manual / ros-drivers/velodyne VLP32C.yaml. VLP-32C fires lasers in groups so per-laser azimuth offsets exist (delta in deg) - filled in beam_azimuth_angles in the same top->bottom order. 10 Hz with 0.2 deg horizontal resolution => 1800 columns per frame.",
+    "beam_altitude_angles": [
+        15.000, 10.333, 7.000, 4.667, 3.333, 2.333, 1.667, 1.333,
+        1.000, 0.667, 0.333, 0.000, -0.333, -0.667, -1.000, -1.333,
+        -1.667, -2.000, -2.333, -2.667, -3.000, -3.333, -3.667, -4.000,
+        -4.667, -5.333, -6.148, -7.254, -8.843, -11.310, -15.639, -25.000
+    ],
+    "beam_azimuth_angles": [
+        -1.4, 4.2, -1.4, 1.4, -1.4, 4.2, -1.4, 1.4,
+        -4.2, 1.4, -1.4, 1.4, -4.2, 1.4, -4.2, 4.2,
+        -1.4, 4.2, -4.2, 1.4, -4.2, 4.2, -1.4, 4.2,
+        -4.2, 1.4, -4.2, 4.2, -1.4, 1.4, -1.4, 1.4
+    ],
+    "lidar_origin_to_beam_origin_mm": 42.0,
+    "lidar_to_sensor_transform": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+    "imu_to_sensor_transform":   [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+    "lidar_mode": "1800x10",
+    "data_format": {
+        "columns_per_frame": 1800,
+        "columns_per_packet": 1,
+        "pixels_per_column": 32,
+        "pixel_shift_by_row": [
+            0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0
+        ]
+    },
+    "prod_line": "Velodyne-VLP-32C"
+}

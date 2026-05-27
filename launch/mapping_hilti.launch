@@ -1,0 +1,22 @@
+<launch>
+    <arg name="rviz" default="false" />
+    <arg name="bag_file" default="" />
+
+    <rosparam file="$(find stack_lio)/config/params.yaml" command="load"/>
+    <rosparam file="$(find stack_lio)/config/params_pandarxt32.yaml" command="load"/>
+    <rosparam file="$(find stack_lio)/config/line_removal.yaml" command="load"/>
+    <rosparam file="$(find stack_lio)/config/os_pandarxt32.json" command="load"/>
+
+    <param name="common/lid_topic" type="string" value="/hesai/pandar"/>
+    <param name="common/imu_topic" type="string" value="/alphasense/imu"/>
+    <!-- Direct hesai handler (LID_TYPE=4=HESAI). Skip repack step. -->
+    <param name="preprocess/lidar_type" type="int" value="4"/>
+    <param name="image/u_shift" type="int" value="0"/>
+
+    <env name="NCC_NO_RING" value="1"/>
+    <node pkg="stack_lio" type="stack_lio_mapping" name="laserMapping" output="screen" launch-prefix=""/>
+
+    <group if="$(arg rviz)">
+     <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find stack_lio)/rviz_cfg/coinlio_viz.rviz" />
+    </group>
+</launch>

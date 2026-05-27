@@ -1,0 +1,32 @@
+# Override snippet for COIN-LIO on Hesai PandarXT-32 (Hilti 2022/2023 SLAM Challenge).
+# Load AFTER params.yaml in the launch file so these keys overwrite the defaults.
+preprocess:
+    lidar_type: 3            # treat as Ouster after repack_to_ouster.py adds Ouster XYZIRT layout
+    scan_line: 32
+    blind: 0.6
+    timestamp_unit: 3        # nanoseconds in 't' field (matches repack output)
+
+image:
+    # PandarXT-32: 32 rings x 2000 columns at 10 Hz (0.18 deg/col)
+    # Ring count comes from JSON (pixels_per_column=32, columns_per_frame=2000).
+    u_shift: 0               # PandarXT fires all channels per column simultaneously, no destagger needed
+    intensity_scale: 0.25    # PandarXT intensity is uint8 0..255; same scale as Ouster reflectivity (0..255 byte path)
+    masks: []                # OS0-128 default masks have y=84 → OOB on 32-row image. Disable for PandarXT-32.
+    # remaining image/* keys inherit from params.yaml
+
+# Hilti 2023 handheld extrinsic IMU<-LiDAR (from official calibration.zip).
+mapping:
+    extrinsic_T: [-0.006950, -0.006713, 0.049893]
+    extrinsic_R: [0.006610, -0.999976, 0.001965,
+                  -0.999977, -0.006612, -0.001245,
+                  0.001258, -0.001957, -0.999997]
+    # Tuned IMU noise (Hilti calib values; convert to FAST-LIO sigma**2 if needed)
+    acc_cov: 0.01
+    gyr_cov: 0.001
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.00001
+
+# Suggested topics (override in launch file as needed)
+common:
+    lid_topic: /hesai/pandar
+    imu_topic: /alphasense/imu

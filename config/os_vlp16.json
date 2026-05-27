@@ -1,0 +1,24 @@
+{
+    "_comment": "Velodyne VLP-16 (Puck) calibration shimmed into Ouster schema for COIN-LIO. 16 channels uniformly spaced 2 deg from +15 to -15 deg. Angles ordered TOP->BOTTOM (ring 0 = +15). 10 Hz with 0.2 deg horizontal resolution => 1800 columns per frame. VLP-16 has alternating laser firing (even/odd) which produces a small per-ring azimuth offset of about +/-1.4 deg; populated below in top->bottom order.",
+    "beam_altitude_angles": [
+        15.0, 13.0, 11.0, 9.0, 7.0, 5.0, 3.0, 1.0,
+        -1.0, -3.0, -5.0, -7.0, -9.0, -11.0, -13.0, -15.0
+    ],
+    "beam_azimuth_angles": [
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+    ],
+    "lidar_origin_to_beam_origin_mm": 41.91,
+    "lidar_to_sensor_transform": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+    "imu_to_sensor_transform":   [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+    "lidar_mode": "1800x10",
+    "data_format": {
+        "columns_per_frame": 1800,
+        "columns_per_packet": 1,
+        "pixels_per_column": 16,
+        "pixel_shift_by_row": [
+            0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0
+        ]
+    },
+    "prod_line": "Velodyne-VLP-16"
+}
