@@ -1314,7 +1314,7 @@ int main(int argc, char** argv)
     // Avoid PCL Warnings
     pcl::console::setVerbosityLevel(pcl::console::L_ERROR);
 
-    std::string animation_path = ros::package::getPath("coin_lio");
+    std::string animation_path = ros::package::getPath("stack_lio");
     animation_path.append("/config/coin_ascii.txt");
     std::ifstream t(animation_path);
     std::stringstream buffer;

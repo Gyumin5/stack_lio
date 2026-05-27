@@ -1,6 +1,6 @@
 #ifndef COIN_LIO_COMMON_LIB_H_
 #define COIN_LIO_COMMON_LIB_H_
-#include <coin_lio/Pose6D.h>
+#include <stack_lio/Pose6D.h>
 #include <deque>
 #include <Eigen/Eigen>
 #include <eigen_conversions/eigen_msg.h>
@@ -34,7 +34,7 @@ using namespace Eigen;
 #define STD_VEC_FROM_EIGEN(mat)  vector<decltype(mat)::Scalar> (mat.data(), mat.data() + mat.rows() * mat.cols())
 #define DEBUG_FILE_DIR(name)     (string(string(ROOT_DIR) + "Log/"+ name))
 
-typedef coin_lio::Pose6D Pose6D;
+typedef stack_lio::Pose6D Pose6D;
 typedef pcl::PointXYZINormal PointType;
 typedef pcl::PointCloud<PointType> PointCloudXYZI;
 typedef vector<PointType, Eigen::aligned_allocator<PointType>>  PointVector;
